@@ -35,13 +35,13 @@ namespace TestSubChain
             {
                 for (int j = 0; j < cleanRanking.Count; j++)
                 {
-                    //check if her score exists 
+                    //check if score exists 
                     if (cleanRanking[j] == myScores[i])
                     {
                         myPosInRanking[i] = j+1;
                         break;
                     }
-                    //check if her score is higher  
+                    //check if  score is higher  
 
                     else if (  myScores[i] > cleanRanking[j]  )
                     {
@@ -50,7 +50,7 @@ namespace TestSubChain
                     }     
                     else 
                     {
-                        //continue if is lower  
+                        //check next one 
 
                         continue;
                     }
