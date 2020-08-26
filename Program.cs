@@ -14,36 +14,36 @@ namespace TestSubChain
         {
             int[] scores = new int[] { 100, 100 ,50 ,40 ,40, 20, 10 }; // scores 
                                          //1      2     3     4   5  
-            int[] myScore = new int[] { 5 , 25, 50,120 }; // my scores 
+            int[] myScores = new int[] { 5 , 25, 50,120 }; // my scores 
 
 
-            int[] myPosInRanking = new int[myScore.Length];
+            int[] myPosInRanking = new int[myScores.Length];
 
-            List<int> denseRanking = new List<int>();
+            List<int> cleanRanking = new List<int>();
 
             //separate duplicates 
             for (int i = 0; i < scores.Length; i++)
             {
-                if (!denseRanking.Contains(scores[i]))
+                if (!cleanRanking.Contains(scores[i]))
                 {
-                    denseRanking.Add(scores[i]);
+                    cleanRanking.Add(scores[i]);
                 }
             }
 
             // estimate in-ranking position 
-            for (int i = 0; i < myScore.Length; i++)
+            for (int i = 0; i < myScores.Length; i++)
             {
-                for (int j = 0; j < denseRanking.Count; j++)
+                for (int j = 0; j < cleanRanking.Count; j++)
                 {
                     //check if her score exists 
-                    if (denseRanking[j] == myScore[i])
+                    if (cleanRanking[j] == myScores[i])
                     {
                         myPosInRanking[i] = j+1;
                         break;
                     }
                     //check if her score is higher  
 
-                    else if (  myScore[i] > denseRanking[j]  )
+                    else if (  myScores[i] > cleanRanking[j]  )
                     {
                         myPosInRanking[i] = j + 1;
                         break;
@@ -60,7 +60,7 @@ namespace TestSubChain
                 //if unallocated add new position at the end 
                 if (myPosInRanking[i] == 0)
                 {
-                    myPosInRanking[i] = denseRanking.Count+1;
+                    myPosInRanking[i] = cleanRanking.Count+1;
                 }
 
             }
